@@ -1,7 +1,10 @@
 package ro.sci;
 
+import ro.sci.controller.CauciucController;
 import ro.sci.controller.LoginController;
+import ro.sci.domain.Cauciuc;
 import ro.sci.domain.LoginRequest;
+import ro.sci.domain.SearchCauciucRequest;
 import ro.sci.domain.User;
 
 public class Main {
@@ -20,6 +23,18 @@ public class Main {
             System.out.println("mai incearca " + loginRequest.loginName);
 
         }
+        CauciucController cauciucController = new CauciucController();
 
+        SearchCauciucRequest searchCauciucRequest = new SearchCauciucRequest("250/70R18 97Y","18", "Cauciuc toate anotimpurile");
+
+        Cauciuc output = cauciucController.handleSearchCauciucRequest(searchCauciucRequest);
+
+        if (output != null) {
+            System.out.println("Cauciuc disponibil pe stoc");
+        }else {
+            System.out.println("Cauciuc indisponibil pe stoc");
+        }
     }
 }
+
+
